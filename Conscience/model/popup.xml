@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<popups>
+	<popup id = "0001">
+		<text>Today is a good day</text>
+		<format>
+			<font-family>'Arial',sans-serif</font-family>
+			<font-size-msg>10</font-size-msg>
+			<font-size-title-bar>8</font-size-title-bar>		
+			<color-background>#FFFFFF</color-background>
+			<color-text>#000000</color-text>		
+			<position-msg>bottom,right</position-msg>
+		</format>
+		<audio>
+			<audio-alert>ding</audio-alert>
+			<audio-volume>5</audio-volume>
+		</audio>
+	</popup>
+	<popup id = "0002">
+		<text>Tomorrow is a better day</text>
+		<format>
+			<font-family>'Times New Roman',times,serif</font-family>
+			<font-size-msg>12</font-size-msg>
+			<font-size-title-bar>8</font-size-title-bar>		
+			<color-background>#FFFFFF</color-background>
+			<color-text>#000000</color-text>		
+			<position-msg>bottom,right</position-msg>
+		</format>
+		<audio>
+			<audio-alert>bang</audio-alert>
+			<audio-volume>3</audio-volume>
+		</audio>
+	</popup>
+	<popup id = "0003">
+		<text>Blah blah blah.</text>
+		<format>
+			<font-family>'Times New Roman',times,serif</font-family>
+			<font-size-msg>12</font-size-msg>
+			<font-size-title-bar>8</font-size-title-bar>		
+			<color-background>#FFFFFF</color-background>
+			<color-text>#000000</color-text>		
+			<position-msg>bottom,right</position-msg>
+		</format>
+		<audio>
+			<audio-alert>crash</audio-alert>
+			<audio-volume>6</audio-volume>
+		</audio>
+	</popup>
+</popups>
