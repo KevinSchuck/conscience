@@ -5,9 +5,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Popup {
 	private int ID;
+	private int themeId;
 	private String text;
-	private MessageFormat format;
-	private AudioAlert alert;
 	
 	public int getID() {
 		return ID;
@@ -27,24 +26,15 @@ public class Popup {
 		this.text = text;
 	}
 	
-	public MessageFormat getFormat() {
-		return format;
+	public int getThemeId() {
+		return themeId;
 	}
 	
-	@XmlElement
-	public void setFormat(MessageFormat format) {
-		this.format = format;
+	@XmlElement(name="theme-id")
+	public void setThemeId(int id) {
+		this.themeId = themeId;
 	}
-	
-	public AudioAlert getAlert() {
-		return alert;
-	}
-	
-	@XmlElement(name="audio")
-	public void setAlert(AudioAlert alert) {
-		this.alert = alert;
-	}
-	
+
 	public void show() {
 		// TODO: add logic to show a popup
 		/// i.e.
@@ -57,7 +47,6 @@ public class Popup {
 	public String toString() {
 		return "ID: " + this.ID +
 			   "\nText: " + this.text +
-			   "\nMessage Format:\n" + this.format +
-			   "\nAudio Alert: \n" + this.alert;
+			   "\nTheme Id:\n" + this.themeId;
 	}
 }

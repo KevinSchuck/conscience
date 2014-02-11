@@ -10,7 +10,8 @@ import javax.xml.bind.Unmarshaller;
 /* This class will handle parsing and writing to the xml files */
 
 public class XMLParser {
-	private ArrayList<Popup> popups = new ArrayList<Popup>();
+	private Popups popups;
+	private Themes themes;
 	private Configuration config = null;
 	private int popupIndex = 0;
 
@@ -18,17 +19,31 @@ public class XMLParser {
 		XMLParser xmlParser = new XMLParser();
 		
 		// Example of getting the ArrayList of popups
-		for (Popup popup : xmlParser.getPopups()) {
-			System.out.println(popup);
-		}
+//		for (Popup popup : xmlParser.getPopups()) {
+//			
+//			//System.out.println(popup);
+//		}
+		
+		System.out.println("Popups size: " + xmlParser.getNumPopups());
+		
+		System.out.println("Config: "
+				+ xmlParser.getConfiguration().getFrequency()
+				+ "\n" + xmlParser.getConfiguration().getVersion()
+				+ "\n" + xmlParser.getConfiguration().getAudioVolume());
+		
 		
 		// Example of creating a new popup and writing to the xml file
 		Popup popup = new Popup();
-		MessageFormat format = new MessageFormat();
-		AudioAlert audioAlert = new AudioAlert();
 		
-		popup.setID(xmlParser.getNextPopupID());
 		popup.setText("Testing writing a message to popups.xml");
+		popup.setThemeId(1);
+		
+		xmlParser.addPopup(popup); // write to ArrayList and XML file
+		
+		
+		// Example of creating a new them and writing to the xml file
+		MessageFormat format = new MessageFormat();
+		Theme theme = new Theme();
 		
 		format.setBgColor(Color.red);
 		format.setFontFamily("Times New Roman");
@@ -36,18 +51,15 @@ public class XMLParser {
 		format.setMsgPosition("bottom, left");
 		format.setTextColor(Color.blue);
 		format.setTitleFontSize(14);
-		popup.setFormat(format);
 		
-		audioAlert.setAlertName("new alert");
-		audioAlert.setAlertVolume(22);
-		popup.setAlert(audioAlert);
-		
-		// write to ArrayList and XML file
-		xmlParser.addPopup(popup);
+		theme.setFormat(format);
+		theme.setName("new theme");
+		theme.setAudioAlert("audio/ding.wav");;
 	}
-	
+
 	public XMLParser() {
 		parsePopups();
+		parseThemes();
 		parseConfiguration();
 	}
 
@@ -58,7 +70,7 @@ public class XMLParser {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Popups.class);
 
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			this.popups = ( (Popups) jaxbUnmarshaller.unmarshal(file) ).getPopups();
+			this.popups = (Popups) jaxbUnmarshaller.unmarshal(file);
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
@@ -67,8 +79,6 @@ public class XMLParser {
 	/* write the popups list to popup.xml */
 	private void writePopupsToXML() {
 		try {
-			Popups popups = new Popups();
-			popups.setPopups(this.popups);
 			File file = new File("model/popup.xml");
 			JAXBContext jaxbContext = JAXBContext.newInstance(Popups.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
@@ -85,42 +95,69 @@ public class XMLParser {
 	}
 	
 	public void parseConfiguration() {
-		// TODO: add logic to parse config.xml
+		try {
+			File file = new File("model/config.xml");
+			JAXBContext jaxbContext = JAXBContext.newInstance(Configuration.class);
+
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			this.config = (Configuration) jaxbUnmarshaller.unmarshal(file);
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void writeConfigurationToXML() {
+		
+	}
+	
+	private void parseThemes() {
+		try {
+			File file = new File("model/themes.xml");
+			JAXBContext jaxbContext = JAXBContext.newInstance(Themes.class);
+
+			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+			this.themes = (Themes) jaxbUnmarshaller.unmarshal(file);
+		} catch (JAXBException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private void writeThemesToXML() {
+		
 	}
 	
 	public int getNumPopups() {
-		return popups.size();
+		return popups.getSize();
 	}
 	
 	/* Return the popup specified by index */
 	public Popup getPopup(int index) {
-		return popups.get(index);
+		return popups.getPopup(index);
 	}
 	
 	/* Return the next popup
 	 * Loop from beginning if the list is exhausted
 	 * */
 	public Popup getPopup() {
-		if (popupIndex >= popups.size()) {
+		if (popupIndex >= popups.getSize()) {
 			popupIndex = 0;
 		}
 		
-		return popups.get(popupIndex++);
+		return popups.getPopup(popupIndex++);
 	}
 	
 	/* return a list of popups */
 	public ArrayList<Popup> getPopups() {
-		return popups;
+		return popups.getPopups();
 	}
 
 	/* add a new popup to the ArrayList and Xml file */
 	public void addPopup(Popup popup) {
-		popups.add(popup);
+		popups.addPopup(popup);
 		writePopupsToXML();
 	}
 
-	/* return next available ID */
-	public int getNextPopupID() {
-		return popups.get(popups.size() - 1).getID() + 1;
+	public Configuration getConfiguration() {
+		return config;
 	}
 }

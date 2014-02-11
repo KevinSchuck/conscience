@@ -1,48 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <popups>
     <popup id="1">
-        <audio>
-            <audio-alert>ding</audio-alert>
-            <audio-volume>5</audio-volume>
-        </audio>
-        <format>
-            <color-background>#ffffffff</color-background>
-            <font-family>'Arial',sans-serif</font-family>
-            <font-size-msg>10</font-size-msg>
-            <position-msg>bottom,right</position-msg>
-            <color-text>#ff000000</color-text>
-            <font-size-title-bar>8</font-size-title-bar>
-        </format>
         <text>Today is a good day</text>
+        <theme-id>0</theme-id>
     </popup>
     <popup id="2">
-        <audio>
-            <audio-alert>bang</audio-alert>
-            <audio-volume>3</audio-volume>
-        </audio>
-        <format>
-            <color-background>#ffffffff</color-background>
-            <font-family>'Times New Roman',times,serif</font-family>
-            <font-size-msg>12</font-size-msg>
-            <position-msg>bottom,right</position-msg>
-            <color-text>#ff000000</color-text>
-            <font-size-title-bar>8</font-size-title-bar>
-        </format>
-        <text>Tomorrow is a better day</text>
+        <text>Today is a better day</text>
+        <theme-id>0</theme-id>
+    </popup>
+    <popup id="2">
+        <text>Testing writing a message to popups.xml</text>
+        <theme-id>0</theme-id>
     </popup>
     <popup id="3">
-        <audio>
-            <audio-alert>crash</audio-alert>
-            <audio-volume>6</audio-volume>
-        </audio>
-        <format>
-            <color-background>#ffffffff</color-background>
-            <font-family>'Times New Roman',times,serif</font-family>
-            <font-size-msg>12</font-size-msg>
-            <position-msg>bottom,right</position-msg>
-            <color-text>#ff000000</color-text>
-            <font-size-title-bar>8</font-size-title-bar>
-        </format>
-        <text>Blah blah blah.</text>
+        <text>Testing writing a message to popups.xml</text>
+        <theme-id>0</theme-id>
+    </popup>
+    <popup id="4">
+        <text>Testing writing a message to popups.xml</text>
+        <theme-id>0</theme-id>
+    </popup>
+    <popup id="5">
+        <text>Testing writing a message to popups.xml</text>
+        <theme-id>0</theme-id>
     </popup>
 </popups>

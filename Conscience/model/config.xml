@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<version>1.0</version>
-<theme>default</theme>
 <config>
+	<version>1.0</version>
 	<frequency>5</frequency>
-	<audio-alert>ding</audio-alert>
 	<audio-volume>5</audio-volume>
-	<format>
-		<font-family>'Times New Roman',times,serif</font-family>
-		<font-size-msg>12</font-size-msg>
-		<font-size-title-bar>8</font-size-title-bar>		
-		<color-background>white</color-background>
-		<color-text>black</color-text>		
-		<position-msg>bottom,right</position-msg>
-	</format>
 </config>
